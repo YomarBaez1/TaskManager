@@ -1,0 +1,41 @@
+﻿@model List<TaskModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <h1>Task Manager</h1>
+
+    <div class="row">
+        <div class="col-md-12">
+            <p>
+                <a href="@Url.Action("Create")" class="btn btn-primary">Create New Task</a>
+            </p>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Description</th>
+                    <th>Creation Date</th>
+                    <th>Status</th>
+                    <th>Priority</th>
+                    <th>Actions</th>
+                </tr>
+                @foreach (var task in Model)
+                {
+                    <tr>
+                        <td>@task.ID</td>
+                        <td>@task.Descripcion</td>
+                        <td>@task.FechaCreacion</td>
+                        <td>@task.Estado</td>
+                        <td>@task.Prioridad</td>
+                        <td>
+                            <a href="@Url.Action("Edit", new { id = task.ID })" class="btn btn-info">Edit</a>
+                            <a href="@Url.Action("Delete", new { id = task.ID })" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
