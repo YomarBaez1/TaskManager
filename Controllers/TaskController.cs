@@ -8,10 +8,6 @@ namespace TaskManager.Controllers
     public class TaskController : Controller
     {
         TaskDAL taskDAL = new TaskDAL();
-        public TaskController()
-        {
-            TaskDAL taskBLL = new TaskDAL();
-        }
 
         // Acción Index: mostrar la lista de tareas existentes
         public ActionResult Index()

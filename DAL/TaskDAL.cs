@@ -9,12 +9,12 @@ namespace TaskManager.DAL
 {
     public class TaskDAL
     {
-        private string connectionString; // Cadena de conexión a la base de datos
+         string connectionString; // Cadena de conexión a la base de datos
 
         public TaskDAL()
         {
             // Inicializar la cadena de conexión a la base de datos
-            string connectionString = ConfigurationManager.ConnectionStrings["TaskManagerDBConnectionString"].ConnectionString;
+             connectionString = ConfigurationManager.ConnectionStrings["TaskManagerDBConnectionString"].ConnectionString;
         }
 
         // Método para agregar una nueva tarea
@@ -22,6 +22,7 @@ namespace TaskManager.DAL
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
+                
                 connection.Open();
 
                 string query = "INSERT INTO Tasks (Descripcion, FechaCreacion, Estado, Prioridad) VALUES (@Descripcion, @FechaCreacion, @Estado, @Prioridad)";
