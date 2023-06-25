@@ -7,8 +7,7 @@ namespace TaskManager.Controllers
 {
     public class TaskController : Controller
     {
-        private TaskDAL taskDAL;
-
+        TaskDAL taskDAL = new TaskDAL();
         public TaskController()
         {
             TaskDAL taskBLL = new TaskDAL();
@@ -17,7 +16,9 @@ namespace TaskManager.Controllers
         // Acción Index: mostrar la lista de tareas existentes
         public ActionResult Index()
         {
-            return View();
+            List<TaskModel> tasks = taskDAL.GetAllTasks();
+
+            return View(tasks);
         }
 
         // Acción Create: formulario para agregar una nueva tarea
@@ -29,13 +30,27 @@ namespace TaskManager.Controllers
         [HttpPost]
         public ActionResult Create(TaskModel task)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                taskDAL.AddTask(task);
+
+                return RedirectToAction("Index");
+            }
+
+            return View(task);
         }
 
         // Acción Edit: formulario para editar una tarea existente
         public ActionResult Edit(int id)
         {
-            return View();
+            TaskModel task = taskDAL.GetTaskById(id);
+
+            if (task == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(task);
         }
 
         [HttpPost]
@@ -43,6 +58,8 @@ namespace TaskManager.Controllers
         {
             if (ModelState.IsValid)
             {
+                taskDAL.UpdateTask(task);
+
                 return RedirectToAction("Index");
             }
 
@@ -52,12 +69,21 @@ namespace TaskManager.Controllers
         // Acción Delete: eliminar una tarea
         public ActionResult Delete(int id)
         {
-            return View();
+            TaskModel task = taskDAL.GetTaskById(id);
+
+            if (task == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(task);
         }
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
+            taskDAL.DeleteTask(id);
+
             return RedirectToAction("Index");
         }
     }
