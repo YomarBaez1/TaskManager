@@ -7,7 +7,7 @@ using TestTaskManager;
 namespace TaskManagerTest
 {
     [TestFixture]
-    public class UnitTest1
+    public class UnitTest
     {
         [Test]
         public async Task CreateSuccess()

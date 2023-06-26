@@ -1,7 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Web.Mvc;
+using System.Xml.Linq;
 using TaskManager.DAL;
-
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.Threading.Tasks;
 
 namespace TaskManager.Controllers
 {
@@ -82,5 +86,47 @@ namespace TaskManager.Controllers
 
             return RedirectToAction("Index");
         }
+
+        // Acción GenerateReport: Generar un reporte nuevo
+        public ActionResult GenerateReport()
+        {
+            // Obtener la lista de tareas desde el DAL
+            List<TaskModel> tasks = taskDAL.GetAllTasks();
+
+            Document document = new Document();
+            MemoryStream memoryStream = new MemoryStream();
+            PdfWriter writer = PdfWriter.GetInstance(document, memoryStream);
+
+            document.Open();
+
+            PdfPTable table = new PdfPTable(5);
+
+            table.AddCell("ID");
+            table.AddCell("Descripción");
+            table.AddCell("Fecha de Creación");
+            table.AddCell("Estado");
+            table.AddCell("Prioridad");
+
+            foreach (var task in tasks)
+            {
+                table.AddCell(task.ID.ToString());
+                table.AddCell(task.Descripcion);
+                table.AddCell(task.FechaCreacion.ToString());
+                table.AddCell(task.Estado);
+                table.AddCell(task.Prioridad.ToString());
+            }
+
+            document.Add(table);
+
+            document.Close();
+
+            Response.ContentType = "application/pdf";
+            Response.AddHeader("content-disposition", "attachment;filename=TasksReport.pdf");
+
+            Response.BinaryWrite(memoryStream.GetBuffer());
+
+            return null;
+        }
+
     }
 }

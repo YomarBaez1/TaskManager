@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager", "TaskManager.
 EndProject
 Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "TaskManagerReport", "TaskManagerReport\TaskManagerReport.rptproj", "{E313EE54-1338-4D19-950F-CE4400A5235E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManagerTest", "TaskManagerTest\TaskManagerTest.csproj", "{1603F72E-FA61-4AA9-AD6A-809BB4E1843B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestTaskManager", "TestTaskManager\TestTaskManager.csproj", "{278E68F7-F7C2-4876-B0FB-F9DCAB9B0C53}"
 EndProject
 Global
@@ -33,12 +31,6 @@ Global
 		{E313EE54-1338-4D19-950F-CE4400A5235E}.Release|Any CPU.ActiveCfg = Release
 		{E313EE54-1338-4D19-950F-CE4400A5235E}.Release|Any CPU.Build.0 = Release
 		{E313EE54-1338-4D19-950F-CE4400A5235E}.Release|Any CPU.Deploy.0 = Release
-		{1603F72E-FA61-4AA9-AD6A-809BB4E1843B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1603F72E-FA61-4AA9-AD6A-809BB4E1843B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1603F72E-FA61-4AA9-AD6A-809BB4E1843B}.DebugLocal|Any CPU.ActiveCfg = Debug|Any CPU
-		{1603F72E-FA61-4AA9-AD6A-809BB4E1843B}.DebugLocal|Any CPU.Build.0 = Debug|Any CPU
-		{1603F72E-FA61-4AA9-AD6A-809BB4E1843B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1603F72E-FA61-4AA9-AD6A-809BB4E1843B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{278E68F7-F7C2-4876-B0FB-F9DCAB9B0C53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{278E68F7-F7C2-4876-B0FB-F9DCAB9B0C53}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{278E68F7-F7C2-4876-B0FB-F9DCAB9B0C53}.DebugLocal|Any CPU.ActiveCfg = Debug|Any CPU
